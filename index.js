@@ -3,6 +3,7 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
+const pdf = require('html-pdf');
 
 // calls to inquire and axios to get account information
 
@@ -28,6 +29,7 @@ inquirer
             let followers = res.data.followers;
             let following = res.data.following;
 
+            // formatting html content that will get saved to the html file. 
             const htmlContent = (`
             <!DOCTYPE html>
             <html lang="en">
@@ -51,33 +53,30 @@ inquirer
                     <h1 id="bio">${userBio}</h1>
                     <div class="content-box">
                         <div class="single-box">
-                            <h1>Public Repositories</h1>
+                            <h1>Public Repositories:</h1>
                             <h2>${pubRepo}</h2>
                         </div>
                         <div class="single-box">
-                            <h1>Followers</h1>
+                            <h1>Followers:</h1>
                             <h2>${followers}</h2>
                         </div>
                     </div>
                     <div class="content-box">
                         <div class="single-box">
-                            <h1>GitHub Stars</h1>
+                            <h1>GitHub Stars:</h1>
                             <h2>42</h2>
                         </div>
                         <div class="single-box">
-                            <h1>Following</h1>
+                            <h1>Following:</h1>
                             <h2>${following}</h2>
                         </div>
                     </div>
-
                 </div>
-
-
             </body>
             </html>
-            
             `);
 
+            // actually writing the html file
 
             fs.writeFile('./public/index.html', htmlContent, (err)=>{
                 if (err) {
@@ -86,6 +85,14 @@ inquirer
                     console.log("write success")
                 }
             })
+
+            var html = fs.readFileSync('./public/index.html', 'utf8');
+            var options = { format: 'Letter' };
             
+            pdf.create(html, options).toFile('./profile.pdf', function(err, res) {
+            if (err) return console.log(err);
+            console.log(res); // { filename: '/app/businesscard.pdf' }
+            
+            });
         })
     })
