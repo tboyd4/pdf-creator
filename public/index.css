@@ -1,0 +1,17 @@
+.head {
+    width: 75%;
+    margin: auto 25px;
+    background-color: lightgreen;
+    color: white;
+    text-align: center;
+}
+
+.img {
+    width: 20%;
+    margin: auto;
+    
+}
+
+.links {
+    display: inline-block;
+}
