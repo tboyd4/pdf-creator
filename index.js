@@ -4,27 +4,16 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 
-// async function to get account info
+// calls to inquire and axios to get account information
 
-async function getAccountInfo () {
-    try {
-        // creating my await promises from inquirer, allowing user input
-        const { account } = await inquirer.prompt({
-            message: "Please enter your GitHub user name",
-            name: "account"
+inquirer
+    .prompt({
+        message: "Enter GitHub User Name",
+        name: "account"
+    }).then(({account}) => {
+        const queryUrl = `https://api.github.com/users/${account}`;
+
+        axios.get(queryUrl).then((res) => {
+            console.log(res.data);
         })
-        const { favColor } = await inquirer.prompt({
-            message: "Please enter your favorite color",
-            name: "favColor"
-        })
-
-        console.log(account + " " + favColor);
-
-
-
-    } catch (err) {
-        if (err) throw err
-    }
-}
-
-getAccountInfo();
+    })
