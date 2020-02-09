@@ -1,0 +1,30 @@
+{
+  "name": "pdf-creator",
+  "version": "1.0.0",
+  "description": "Takes user input and creates pdf based on searched github account information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tboyd4/pdf-creator.git"
+  },
+  "keywords": [
+    "pdf",
+    "create",
+    "github",
+    "node"
+  ],
+  "author": "Tyler Boyd (tboyd4)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tboyd4/pdf-creator/issues"
+  },
+  "homepage": "https://github.com/tboyd4/pdf-creator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "fs": "0.0.1-security",
+    "inquirer": "^7.0.4"
+  }
+}
