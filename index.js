@@ -7,10 +7,14 @@ const pdf = require('html-pdf');
 // calls to inquire and axios to get account information
 
 inquirer
-    .prompt({
+    .prompt([{
         message: "Enter GitHub User Name",
         name: "account"
-    }).then(({account}) => {
+        },
+        {
+        message: "Enter your favorite color",
+        name: "userColor"
+        }]).then(({account, userColor}) => {
         const queryUrl = `https://api.github.com/users/${account}`;
 
         axios.get(queryUrl).then((res) => {
@@ -40,7 +44,7 @@ inquirer
                 .head {
                     width: 75%;
                     margin: auto;
-                    background-color: lightgreen;
+                    background-color: ${userColor};
                     border: lightgray 1px solid;
                     box-shadow: gray 0 2px 3px;
                     color: black;
@@ -93,7 +97,7 @@ inquirer
                     width: 30%;
                     margin: 12px;
                     padding: 15px;
-                    background-color: lightgreen;
+                    background-color: ${userColor};
                     border: 1px lightgray solid;
                     box-shadow: gray 0 2px 3px;
                 }
