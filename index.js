@@ -1,6 +1,5 @@
 // importing dependencies
 
-const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 const pdf = require('html-pdf');
@@ -19,7 +18,6 @@ inquirer
 
             // pulling specific data out
             let profImage = res.data.avatar_url;
-            let userName = res.data.login;
             let fullName = res.data.name;
             let userLoca = res.data.location;
             let userGitHubProf = res.data.html_url;
