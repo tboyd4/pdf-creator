@@ -138,16 +138,6 @@ inquirer
             </html>
             `);
 
-            // actually writing the html file
-
-            // fs.writeFile('./public/index.html', htmlContent, (err)=>{
-            //     if (err) {
-            //         console.log(err)
-            //     } else {
-            //         console.log("HTML File Write Success")
-            //     }
-            // })
-
             // convert html into pdf
 
             var options = { format: 'Letter' };
