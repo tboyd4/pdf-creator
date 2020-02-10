@@ -38,6 +38,68 @@ inquirer
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Document</title>
                 <link rel="stylesheet" type="text/css" href="./index.css">
+                <style>
+                .head {
+                    width: 75%;
+                    margin: auto;
+                    background-color: lightgreen;
+                    border: lightgray 1px solid;
+                    box-shadow: gray 0 2px 3px;
+                    color: black;
+                    text-align: center;
+                    padding: 25px;
+                }
+                
+                .img {
+                    width: 20%;
+                    margin: auto;
+                    margin-top: 20px;
+                    border: 1px lightgray solid;
+                    box-shadow: gray 0 2px 3px;
+                    
+                }
+                
+                .links {
+                    display: inline-block;
+                    padding-right: 20px;
+                }
+                
+                .link-style {
+                    text-decoration: none;
+                    color: black;
+                    padding-right: 10px;
+                }
+                
+                body {
+                    background-color: lightblue;
+                    height: 100%;
+                }
+                
+                #bio {
+                    width: 75%;
+                    margin: auto;
+                    text-align: center;
+                    margin-top: 25px;
+                
+                }
+                
+                .content-box {
+                    width: 75%;
+                    margin: auto;
+                    padding: 15px;
+                 
+                }
+                
+                .single-box {
+                    display: inline-block;
+                    width: 30%;
+                    margin: 12px;
+                    padding: 15px;
+                    background-color: lightgreen;
+                    border: 1px lightgray solid;
+                    box-shadow: gray 0 2px 3px;
+                }
+                </style>
             </head>
             <body>
                 <div class="background">
@@ -50,24 +112,24 @@ inquirer
                             <a class="link-style" href="${userBlog}">Blog</a>
                         </div>
                     </div>
-                    <h1 id="bio">${userBio}</h1>
+                    <h3 id="bio">${userBio}</h3>
                     <div class="content-box">
                         <div class="single-box">
-                            <h1>Public Repositories:</h1>
+                            <h3>Public Repos:</h3>
                             <h2>${pubRepo}</h2>
                         </div>
                         <div class="single-box">
-                            <h1>Followers:</h1>
+                            <h3>Followers:</h3>
                             <h2>${followers}</h2>
                         </div>
                     </div>
                     <div class="content-box">
                         <div class="single-box">
-                            <h1>GitHub Stars:</h1>
+                            <h3>GitHub Stars:</h3>
                             <h2>42</h2>
                         </div>
                         <div class="single-box">
-                            <h1>Following:</h1>
+                            <h3>Following:</h3>
                             <h2>${following}</h2>
                         </div>
                     </div>
@@ -82,16 +144,18 @@ inquirer
                 if (err) {
                     console.log(err)
                 } else {
-                    console.log("write success")
+                    console.log("HTML File Write Success")
                 }
             })
 
-            var html = fs.readFileSync('./public/index.html', 'utf8');
+            // convert html into pdf
+            
             var options = { format: 'Letter' };
             
-            pdf.create(html, options).toFile('./profile.pdf', function(err, res) {
+            pdf.create(htmlContent, options).toFile('./public/PDF/profile.pdf', function(err, res) {
             if (err) return console.log(err);
             console.log(res); // { filename: '/app/businesscard.pdf' }
+            console.log("Successful Conversion to PDF");
             
             });
         })
