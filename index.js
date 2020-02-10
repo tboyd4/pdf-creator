@@ -140,19 +140,19 @@ inquirer
 
             // actually writing the html file
 
-            fs.writeFile('./public/index.html', htmlContent, (err)=>{
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log("HTML File Write Success")
-                }
-            })
+            // fs.writeFile('./public/index.html', htmlContent, (err)=>{
+            //     if (err) {
+            //         console.log(err)
+            //     } else {
+            //         console.log("HTML File Write Success")
+            //     }
+            // })
 
             // convert html into pdf
-            
+
             var options = { format: 'Letter' };
             
-            pdf.create(htmlContent, options).toFile('./public/PDF/profile.pdf', function(err, res) {
+            pdf.create(htmlContent, options).toFile('./public/profile.pdf', function(err, res) {
             if (err) return console.log(err);
             console.log(res); // { filename: '/app/businesscard.pdf' }
             console.log("Successful Conversion to PDF");
